@@ -142,7 +142,7 @@ def saring_id_group0():
 	while 1:
 		id_group = inputD('[?]Id Group')
 		tampil('\rh[*]Melihat')
-		a = buka('https://m.facebook.com/browse/group/members/?id='+id_group+'&amp%3Bstart=0&amp%3BlistType=list_nonfriend&amp%3Brefid=18&amp%3B_rdc=1&amp%3B_rdr&_rdc=1&_rdr')
+		a = buka('https://m.facebook.com/browse/group/members/?id='+id_group+'&start=0&listType=list_nonfriend_nonadmin&ref=m_notif&notif_t=group_highlights')
 		nama = ' '.join(re.findall(r'<title>(.*?)</title>',a)[0].split()[1:])
 		try:
 			next = br.find_link(url_regex= '/browse/group/members/').url
