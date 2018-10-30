@@ -22,9 +22,9 @@ def keluar():
 	os.sys.exit()
 log = 0
 id_teman = []
-id_group = []
+id_cgroup = []
 fid_teman = []
-fid_group = []
+fid_cgroup = []
 br = mechanize.Browser()
 br.set_handle_robots(False)
 br.set_handle_equiv(True)
@@ -34,9 +34,9 @@ br.set_handle_redirect(True)
 br.set_handle_refresh(mechanize._http.HTTPRefreshProcessor(),max_time=1)
 br.addheaders = [('User-Agent','Opera/9.80 (Android; Opera Mini/32.0.2254/85. U; id) Presto/2.12.423 Version/12.16')]
 def bacaData():
-	global fid_group,fid_teman
+	global fid_cgroup,fid_teman
 	try:
-		fid_group = open(os.sys.path[0]+'/CBgroup.txt','r').readlines()
+		fid_cgroup = open(os.sys.path[0]+'/CBcgroup.txt','r').readlines()
 	except:pass
 	try:
 		fid_teman = open(os.sys.path[0]+'/CBteman.txt','r').readlines()
@@ -74,11 +74,11 @@ def inputM(x,d):
 			tampil('\rm[!]Pilihan tidak ada')
 	return i
 def simpan():
-	if len(id_group) != 0:
+	if len(id_cgroup) != 0:
 		tampil('\rh[*]Menyimpan hasil dari group')
 		try:
-			open(os.sys.path[0]+'/CBgroup.txt','w').write('\n'.join(id_group))
-			tampil('\rh[!]Berhasil meyimpan \rcCBgroup.txt')
+			open(os.sys.path[0]+'/CBcgroup.txt','w').write('\n'.join(id_cgroup))
+			tampil('\rh[!]Berhasil meyimpan \rcCBcgroup.txt')
 		except:
 			tampil('\rm[!]Gagal meyimpan')
 	if len(id_teman) != 0:
@@ -134,9 +134,9 @@ def saring_id_group1(d):
 			a = i.replace('?','')
 		else:
 			a = i.replace('profile.php?id=','').replace('&amp;','')
-		if a not in id_group:
+		if a not in id_cgroup:
 			tampil('\rk==>\rc%s'%a)
-			id_group.append(a)
+			id_cgroup.append(a)
 def saring_id_group0():
 	global id_group
 	while 1:
@@ -165,12 +165,12 @@ def idgroup():
 		try:
 			next = br.find_link(url_regex= '/browse/group/members/').url
 		except:
-			tampil('\rm[!]Hanya Mendapatkan \rh %d id'%len(id_group))
+			tampil('\rm[!]Hanya Mendapatkan \rh %d id'%len(id_cgroup))
 			break
 	simpan()
 	i = inputD('[?]Langsung Crack (y/t)',['Y','T'])
 	if i.upper() == 'Y':
-		return crack(id_group)
+		return crack(id_cgroup)
 	else:
 		return menu()
 def idteman():
@@ -316,14 +316,14 @@ def lanjutT():
 			fid_teman = []
 	return 0
 def lanjutG():
-	global fid_group
-	if len(fid_group) != 0:
+	global fid_cgroup
+	if len(fid_cgroup) != 0:
 		i = inputD('[?]Riset Ulang Id Group/lanjutkan yang ada(r/l)',['R','L'])
 		if i.upper() == 'L':
-			return crack(fid_group)
+			return crack(fid_cgroup)
 		else:
-			os.remove(os.sys.path[0]+'/CBgroup.txt')
-			fid_group = []
+			os.remove(os.sys.path[0]+'/CBcgroup.txt')
+			fid_cgroup = []
 	return 0
 def menu():
 	tampil('''\rh
